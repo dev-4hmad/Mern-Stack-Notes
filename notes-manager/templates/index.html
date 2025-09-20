@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes Manager</title>
+</head>
+<body>
+    <h1>Notes Manager</h1>
+    <form action="/add" method="post">
+        <input type="text" name="text" placeholder="Enter note" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <h2>Your Notes</h2>
+    <ul>
+        <!-- Notes will be injected here -->
+        {{notes}}
+    </ul>
+</body>
+</html>
