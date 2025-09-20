@@ -1,3 +1,6 @@
 target/
 src/bin
 Cargo.lock
+.vscode
+notes.md
+/index.html
