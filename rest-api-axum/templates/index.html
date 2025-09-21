@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+        }
+        
+        .header h1 {
+            font-weight: 600;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+            text-align: left;
+        }
+        
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            color: #6a11cb;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            border-color: #6a11cb;
+            outline: none;
+        }
+        
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .privacy {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .privacy a {
+            color: #2575fc;
+            text-decoration: none;
+        }
+        
+        .animation {
+            text-align: center;
+            margin-top: 20px;
+            height: 40px;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 10px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Submit Your Info</h1>
+            <p>Join our community today</p>
+        </div>
+        
+        <div class="form-container">
+            <form action="/submit" method="post">
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+                
+                <div class="input-group">
+                    <label for="age">Your Age</label>
+                    <i class="fas fa-birthday-cake"></i>
+                    <input type="number" id="age" name="age" required min="0" placeholder="Enter your age">
+                </div>
+                
+                <button type="submit">
+                    Submit Information <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+            
+            <div class="privacy">
+                By submitting, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+            </div>
+            
+            <div class="animation">
+                <i class="fas fa-lock" style="color: #6a11cb; font-size: 24px;"></i>
+                <span style="color: #666; margin-left: 5px;">Secure form</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple animation for the button
+        const button = document.querySelector('button');
+        
+        button.addEventListener('mouseover', () => {
+            button.style.background = 'linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)';
+        });
+        
+        button.addEventListener('mouseout', () => {
+            button.style.background = 'linear-gradient(135deg, #2575fc 0%, #6a11cb 100%)';
+        });
+        
+        // Add focus styles for accessibility
+        const inputs = document.querySelectorAll('input');
+        
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('i').style.color = '#2575fc';
+            });
+            
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('i').style.color = '#6a11cb';
+            });
+        });
+    </script>
+</body>
+</html>
