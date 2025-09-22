@@ -1,6 +1,3 @@
 ## Projects
 
-> This repo contains simple projects which I've made while learning Rust.
-
-- [To-Do-CLI](To-Do-CLI/)
-- [Notes-Manager](notes-manager/)
+This repo contains my personal learning and pracitce code while learning Mern Stack
