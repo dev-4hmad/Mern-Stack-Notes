@@ -1,2 +1,0 @@
-I'm gonna learn rust
-First app created with Rust
