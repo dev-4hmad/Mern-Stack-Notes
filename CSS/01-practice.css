@@ -1,0 +1,32 @@
+.parent{
+    width: 35px;
+    height: 80px;
+    background-color: rgb(255, 255, 255);
+    border: solid 1px;
+}
+.child{
+    width: 15px;
+    height: 15px;
+    border: solid black 1px;
+    padding: 2px;
+    border-radius: 50%;
+    margin: 4px 5.5px 4px;
+}
+#red{
+    background-color: red;
+}
+#yellow{
+    background-color: yellow;
+}
+#green{
+    background-color: green;
+}
+#red:hover{
+    background-color: green;
+}
+#yellow:hover{
+    background-color: red;
+}
+#green:hover{
+    background-color: yellow;
+}
