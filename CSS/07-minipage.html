@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar Menu</title>
+  <link rel="stylesheet" href="07-minipage.css">
+</head>
+<body>
+
+  <!-- Hamburger Icon -->
+  <button class="hamburger" onclick="openSidebar()">☰</button>
+
+  <!-- Sidebar Menu -->
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="closeSidebar()">×</span>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="#">More</a>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay" onclick="closeSidebar()"></div>
+
+  <script src="07-minipage.js"></script>
+
+</body>
+</html>
