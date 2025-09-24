@@ -1,0 +1,33 @@
+.con{
+    display: flex;
+    justify-content: center;  /* horizontal center */
+    align-items: center;
+    height: 100vh;
+}
+.ani {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 50%;
+    animation: boxani 0.2s infinite alternate,
+    text1 0.2s infinite alternate;
+    display: flex;
+    justify-content: center;  /* horizontal center */
+    align-items: center;
+}
+@keyframes boxani {
+    from {
+        background-color: rgb(255, 255, 255);
+    }
+    to {
+        background-color: rgb(255, 0, 0);
+    }
+}
+@keyframes text1 {
+    from{
+        color: rgb(255, 255, 255);
+    }
+    to{
+        color: rgb(0, 0, 0);
+    }
+}
