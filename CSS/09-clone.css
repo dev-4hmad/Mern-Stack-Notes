@@ -1,0 +1,95 @@
+body{
+    background: black;
+    color: white;
+    margin: 0;
+    overflow: hidden;
+}
+.main{
+    display: flex;
+    height: 100vh;
+}
+.sidebar{
+    width: 320px;
+    background-color: 000;
+    border-radius: 1rem;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+.main-content{
+    background-color: #363636;
+    flex: 1;
+    border-radius: 1rem;
+    overflow: auto;
+    margin-left: 0.3rem;
+}
+.player{
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+}
+.nav{
+    background-color: #363636;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100px;
+    padding: 0.5rem 0.75rem;
+}
+.nav-op{
+    line-height: 2.5rem;
+    opacity: 0.7;
+    padding: 0.3rem 0.55rem;
+}
+.nav-op:hover{
+    opacity: 1;
+}
+.nav-op i{
+    font-size: 1.25rem;
+}
+.nav-op a{
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+.library{
+    margin-top: 10px;
+    background-color: #363636;
+    border-radius: 1rem;
+    padding: 0.5rem 0.75rem;
+    height: 100%;
+}
+.options{
+    margin: 10px 0 0 10px;
+}
+.boxes{
+    margin: 10px 0 0 10px;
+}
+.managespace{
+    height: 10%;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+}
+.main-nav{
+    width: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+.ooo1{
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 50%;
+}
+.ooo2{
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    border-radius: 50%;
+}
