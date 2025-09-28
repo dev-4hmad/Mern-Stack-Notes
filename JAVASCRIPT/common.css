@@ -1,16 +1,21 @@
-body{
-    margin-top: 100px;
+.c {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 50px;
+    flex-direction: column;
 }
-
-div{
-    height: 30px;
-    width: 110px;
-    border: 1px solid black;
-    padding: 50px;
-    margin-top: 30px;
+ul{
+    list-style: none;
+    border-radius: 30px;
+    background-color: rgba(72, 117, 117, 0.651);
+}
+li{
+    margin-left: -30px;
+}
+input{
+    border: 1px solid rgb(0, 0, 0);
+    outline: none;
+}
+.delete{
+    margin-left: 30px;
 }
