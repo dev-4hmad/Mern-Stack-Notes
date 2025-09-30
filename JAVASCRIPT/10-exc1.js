@@ -1,3 +1,5 @@
+// Guessing game
+
 let para = document.querySelector("p");
 let btn = document.querySelector("button");
 let inp = document.querySelector("input")
