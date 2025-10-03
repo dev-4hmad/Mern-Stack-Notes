@@ -1,0 +1,28 @@
+body{
+    margin-top: 20px;
+    background-color: lightcyan;
+}
+.chat{
+    background-color: rgb(156, 194, 228);
+    padding: 20px;
+    border-radius: 16px;
+    display: inline-block;
+}
+.msg{
+    background: rgba(14, 146, 65, 0.575);
+    color: rgb(0, 0, 0);
+    border: 1px solid red;
+    padding: 10px;
+    border-radius: 10px;
+}
+button{
+    border: 1px solid teal;
+    background-color: rgb(118, 219, 219);
+    border-radius: 14px;
+    padding: 4px;
+    margin: 4px;
+    opacity: 0.8;
+}
+button:hover{
+    opacity: 1;
+}
