@@ -26,6 +26,10 @@ let posts = [
   },
 ];
 
+
+app.get("/",(req,res)=>{
+  res.send("root working")
+})
 // Render the first page or index.ejs ----------------
 app.get("/posts", (req, res) => {
   res.render("index.ejs", { posts });
