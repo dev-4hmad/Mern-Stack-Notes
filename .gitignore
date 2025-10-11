@@ -1,3 +1,7 @@
+/.vscode
 /REST/node_modules
 /MongoDB/node_modules
 /01-PROJECT/node_modules
+/TYPESCRIPT/node_modules
+/TYPESCRIPT/dist
+*.log
