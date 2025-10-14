@@ -1,6 +1,4 @@
-function loop(x: number){
-    for (let i=1; i<=x; i++){
-        console.log(i)
-    }
+function domainName(s: string){
+    return s.replace('http://', "").replace('https://', "").replace('www.', "").split(".")[0];
 }
-loop(6)
+console.log(domainName("www.xakep.ru"));
