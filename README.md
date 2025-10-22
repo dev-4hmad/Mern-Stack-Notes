@@ -5,3 +5,10 @@ This repo is just my practice code and learning material while learning MernStac
 - [HTML](HTML/)
 - [CSS](CSS/)
 - [JavaScript](JAVASCRIPT/)
+- [TypeScript](TYPESCRIPT/)
+
+#### Some projects:
+
+- [01-PROJECT](01-PROJECT/)
+- [MongoDB](MongoDB/)
+- [REST API](REST/)
