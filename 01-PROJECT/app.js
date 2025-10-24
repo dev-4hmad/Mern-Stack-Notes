@@ -7,6 +7,14 @@ app.set("views", path.join(__dirname, "views"))
 // parsing url
 app.use(express.urlencoded({extended: true}))
 
+// ejs mate
+const ejsMate = require("ejs-mate")
+app.engine('ejs', ejsMate)
+
+// using CSS file
+app.use(express.static(path.join(__dirname, "public")))
+
+// method-override
 const methodOverride = require("method-override")
 app.use(methodOverride("_method"))
 
