@@ -5,10 +5,11 @@
     <h3>Listing details</h3>
   </div>
   <div class="card col-6 offset-3 show-card" style="width: 18rem">
+    <% /* show image - listing.image is an object {filename, url} */ %>
     <img
-      src="<%= listing.image %>"
+      src="<%= (listing.image && listing.image.url) ? listing.image.url : 'https://via.placeholder.com/800x400?text=No+Image' %>"
       class="card-img-top show-img"
-      alt="listing img error"
+      alt="listing img"
     />
     <div class="card-body">
       <p class="card-text">
@@ -18,12 +19,9 @@
         <%= listing.location %> <br />
         <%= listing.country %>
       </p>
-    </div>
-  </div>
-  <div class="btns">
-    <a href="/listings/<%= listing._id%>/edit" class="btn btn-success col-2 offset-3">Edit</a>
-    <form method="POST" action="/listings/<%=listing._id%>?_method=Delete">
-      <button class="btn btn-danger offset-5">Delete</button>
-    </form>
+      <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" style="display:inline">
+        <button class="btn btn-danger offset-5">Delete</button>
+      </form>
+      
   </div>
 </div>

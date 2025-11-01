@@ -29,7 +29,7 @@
         <input
           name="listing[image]"
           class="form-control"
-          value="<%=listing.image%>"
+          value="<%= listing.image && listing.image.url ? listing.image.url : '' %>"
           type="text"
           required
         />
@@ -45,7 +45,6 @@
           name="listing[price]"
           class="form-control"
           value="<%=listing.price%>"
-          type="number"
           required
         />
         <div class="invalid-feedback">Please enter a Price</div>
