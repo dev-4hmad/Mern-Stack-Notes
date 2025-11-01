@@ -4,7 +4,7 @@ const Listing = require("./models/listing");
 const path = require("path");
 const wrapAsync = require("./utils/wrapAsync");
 const ExpressError = require("./utils/ExpressError");
-
+const { listingSchema } = require("./schema.js");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 // parsing url
@@ -39,6 +39,16 @@ app.get("/", (req, res) => {
   res.send("Root is working 😀");
 });
 
+const validateListing = (req, res, next) => {
+  let { error } = listingSchema.validate(req.body);
+  if (error) {
+    let errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(404, errMsg);
+  } else {
+    next();
+  }
+};
+
 app.get(
   "/listings",
   wrapAsync(async (req, res) => {
@@ -63,11 +73,13 @@ app.get(
 // create route
 app.post(
   "/listings",
+  validateListing,
   wrapAsync(async (req, res) => {
-    if (!req.body.listing) {
-      throw new ExpressError(404, "Error from /listing, SEND VALID DATA");
+    const listingData = req.body.listing;
+    if (listingData.image && typeof listingData.image === "string") {
+      listingData.image = { filename: "external", url: listingData.image };
     }
-    const newListing = new Listing(req.body.listing);
+    const newListing = new Listing(listingData);
     await newListing.save();
     res.redirect("/listings");
   })
@@ -87,12 +99,14 @@ app.get(
 // update route
 app.put(
   "/listings/:id",
+  validateListing,
   wrapAsync(async (req, res) => {
-    if (!req.body.listing) {
-      throw new ExpressError(404, "Error from /listing/:id, SEND VALID DATA");
-    }
     let { id } = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listen });
+    const listingData = req.body.listing;
+    if (listingData.image && typeof listingData.image === "string") {
+      listingData.image = { filename: "external", url: listingData.image };
+    }
+    await Listing.findByIdAndUpdate(id, { ...listingData });
     res.redirect(`/listings/${id}`);
   })
 );
@@ -113,7 +127,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went wrong (default error)" } =
     err;
-  res.status(statusCode).send(message);
+  res.status(statusCode).render("error.ejs", { err });
 });
 
 const PORT = 8080;
