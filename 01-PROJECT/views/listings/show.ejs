@@ -4,7 +4,7 @@
   <div class="col-8 offset-3">
     <h3><%= listing.title %></h3>
   </div>
-  <div class="card col-6 offset-3 show-card" style="width: 18rem">
+  <div class="card col-6 offset-3 show-card" style="width: 30rem">
     <% /* show image - listing.image is an object {filename, url} */ %>
     <img
       src="<%= (listing.image && listing.image.url) ? listing.image.url : 'https://via.placeholder.com/800x400?text=No+Image' %>"
@@ -18,9 +18,26 @@
         <%= listing.location %> <br />
         <%= listing.country %>
       </p>
-      <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" style="display:inline">
-        <button class="btn btn-danger offset-5">Delete</button>
-      </form>
-      
+      <div class="btns">
+    <a href="/listings/<%= listing._id%>/edit" class="btn btn-success col-2">Edit</a>
+    <form method="POST" action="/listings/<%=listing._id%>?_method=Delete">
+      <button class="btn btn-danger offset-5">Delete</button>
+    </form>
+  </div>
+  <hr>
+  <div class="col-8 offset-1 mb-3">
+    <h4>Leave a review</h4>
+    <form action="/listings/<%= listing.id %>/reviews" method="POST">
+      <div class="mb-3 mt-3">
+        <label for="rating" class="form-label">Rating</label>
+        <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range">
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea name="review[comment]" id="comment"  class="form-control"></textarea>
+      </div>
+      <button class="btn btn-outline-dark mt-3">Submit</button>
+    </form>
+  </div>
   </div>
 </div>
