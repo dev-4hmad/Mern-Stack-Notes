@@ -4,6 +4,8 @@ const path = require("path");
 const ExpressError = require("./utils/ExpressError");
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 // parsing url
@@ -20,6 +22,26 @@ app.use(express.static(path.join(__dirname, "public")));
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
+// session
+const sessionOptions = {
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie:{
+        expires: Date.now()  + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true
+    }
+};
+
+app.get("/", (req, res) => {
+  res.send("Root is working 😀");
+});
+
+app.use(session(sessionOptions));
+// flash
+app.use(flash()); 
+
 const mongoose = require("mongoose");
 const review = require("./models/review.js");
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
@@ -35,9 +57,11 @@ main()
     console.error(err);
   });
 
-app.get("/", (req, res) => {
-  res.send("Root is working 😀");
-});
+app.use((req, res, next)=>{
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
+})
 
 // router/listing.js
 app.use("/listings", listings);
