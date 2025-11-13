@@ -2,8 +2,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const ExpressError = require("./utils/ExpressError");
-const listings = require("./routes/listing.js");
-const reviews = require("./routes/review.js");
+const listingRouter = require("./routes/listing.js");
+const reviewsRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport")
@@ -74,19 +75,12 @@ main()
     console.error(err);
   });
 
-  app.get("/demouser", async(req,res)=>{
-    let fakeUser = new User({
-        email: "studnet@gmail.com",
-        username: "delta-student"
-    })
-    let registerdUser = await User.register(fakeUser, "helloworld")
-    res.send(registerdUser);
-})
-
 // router/listing.js
-app.use("/listings", listings);
+app.use("/listings", listingRouter);
 // router/review.js
-app.use("/listings/:id/reviews", reviews);
+app.use("/listings/:id/reviews", reviewsRouter);
+// router/user.js
+app.use("/", userRouter);
 
 app.use((req, res, next) => {
   next(new ExpressError(404, "Page not found"));
